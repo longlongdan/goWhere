@@ -7,7 +7,7 @@
 	    </input>
 	    <span class="iconfont sousuo">&#xe653;</span>
 	    <div class='header-right'>
-	      城市<span class="iconfont">&#xe64a;</span>
+	      北京<span class="iconfont">&#xe64a;</span>
 		</div>
 	</div>
 </template>
