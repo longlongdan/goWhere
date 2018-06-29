@@ -17,7 +17,7 @@
 			return {
 				list: [
 				{id:'001',imgUrl:'../../../../static/pic1.png',content:'签证.WIFI'},
-				{id:'002',imgUrl:'../../../../static/pic2.png',content:'出境游'},
+				{id:'002',imgUrl:'../../../../static/pic2.png',content:'出境游出境游出境游出境游'},
 				{id:'003',imgUrl:'../../../../static/pic3.png',content:'一日游'},
 				{id:'004',imgUrl:'../../../../static/pic4.png',content:'美食林'},
 				{id:'005',imgUrl:'../../../../static/pic5.png',content:'汽车票'},
@@ -44,6 +44,7 @@
 	}
 </script>
 <style lang="stylus" scoped>
+	@import '~styles/mixins.styl'
 	.icons
 		width: 100%
 		height: 0
@@ -58,4 +59,5 @@
 				margin: 0 auto
 			p
 				text-align: center
+				ellipsis()
 </style>
