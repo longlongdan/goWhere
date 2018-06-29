@@ -1,9 +1,13 @@
 <template>
 	<div class="icons">
-		<div class='icon' v-for = "item of list" :key = 'item.id'>
-			<img :src="item.imgUrl">
-			<p>{{item.content}}</p>
-		</div>
+		<swiper>
+			<swiper-slide v-for = '(page,index) of pages' :key= 'index'>
+				<div class='icon' v-for = "item of page" :key = 'item.id'>
+					<img :src="item.imgUrl">
+					<p>{{item.content}}</p>
+				</div>
+			</swiper-slide>
+		</swiper>
 	</div>
 </template>
 <script>
@@ -19,8 +23,22 @@
 				{id:'005',imgUrl:'../../../../static/pic5.png',content:'汽车票'},
 				{id:'006',imgUrl:'../../../../static/pic6.png',content:'国内游'},
 				{id:'007',imgUrl:'../../../../static/pic7.png',content:'超级巴士'},
+				{id:'008',imgUrl:'../../../../static/pic8.png',content:'攻略'},
 				{id:'008',imgUrl:'../../../../static/pic8.png',content:'攻略'}
 				]
+			}
+		},
+		computed: {
+			pages :function(){
+				var page = [];//[[],[]]
+				this.list.forEach((value,index)=>{
+					let i = Math.floor(index/8);
+					if (!page[i]) {
+						page[i] = []
+					}
+					page[i].push(value)
+				})
+				return page
 			}
 		}
 	}
