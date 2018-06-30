@@ -6,9 +6,11 @@
 	  	<input type="text" class='header-input' placeholder="请输入城市/景点/游玩主题">
 	    </input>
 	    <span class="iconfont sousuo">&#xe653;</span>
-	    <div class='header-right'>
-	      北京<span class="iconfont">&#xe64a;</span>
-		</div>
+	    <router-link to='/city' class='citychoose'>
+		    <div class='header-right'>
+		      北京<span class="iconfont">&#xe64a;</span>
+			</div>
+		</router-link>
 	</div>
 </template>
 
@@ -42,6 +44,8 @@ export default {
 		left: .8rem
 		top: .05rem
 		color: $bgColor
+	.citychoose
+		color: #fff
 	.header-right
 		width: 1.24rem
 		float: right
