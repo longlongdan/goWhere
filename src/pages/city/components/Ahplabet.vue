@@ -11,7 +11,8 @@
 		},
 		data () {
 			return {
-				startY: 0
+				startY: 0,
+				timer: null
 			}
 		},
 		methods: {
@@ -22,12 +23,17 @@
 
 			},
 			handleTM (e) {
-				let height = e.targetTouches[0].clientY - this.startY -74;
-				let index = Math.floor(height/20)
-				if (index>=0 && index<Object.keys(this.cities).length) {
+				if (this.timer) {
+					clearTimeout(this.timer)
+				}
+				this.timer = setTimeout(()=>{
+					let height = e.targetTouches[0].clientY - this.startY -74;
+					let index = Math.floor(height/16)
+					if (index>=0 && index<Object.keys(this.cities).length) {
 					let els = document.querySelectorAll('.cityGuide');
 					this.$emit('change',els[index].innerText)
 				}
+				},16)
 			},
 			handleTE () {}
 		},
