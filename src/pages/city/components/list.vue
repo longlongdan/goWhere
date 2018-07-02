@@ -5,45 +5,18 @@
 					<p class="cityTitle">所在城市</p>
 					<ul class="loction citylist">
 						<li class="cityItem">绵阳</li>
-						<li class="cityItem">绵阳</li>
-						<li class="cityItem">绵阳</li>
-						<li class="cityItem">绵阳</li>
-						<li class="cityItem">绵阳</li>
-						<li class="cityItem">绵阳</li>
-						<li class="cityItem">绵阳</li>
 					</ul>
 				</div>
 				<div>
 					<p class="cityTitle">热门城市</p>
 					<ul class="hotCity citylist">
-						<li class="cityItem">北京</li>
+						<li class="cityItem" v-for='item of hotcities' :key='item.id'>{{item.name}}</li>
 					</ul>
 				</div>
-				<div>
-					<p class="cityTitle">A</p>
+				<div v-for='(city,key) of cities' :key='key' :ref='key'>
+					<p class="cityTitle">{{key}}</p>
 					<ul class="allCity citylist">
-						<li class="allcityItem">阿鲁及</li>
-						<li class="allcityItem">阿鲁及</li>
-						<li class="allcityItem">阿鲁及</li>
-						<li class="allcityItem">阿鲁及</li>
-					</ul>
-				</div>
-				<div>
-					<p class="cityTitle">A</p>
-					<ul class="allCity citylist">
-						<li class="allcityItem">阿鲁及</li>
-						<li class="allcityItem">阿鲁及</li>
-						<li class="allcityItem">阿鲁及</li>
-						<li class="allcityItem">阿鲁及</li>
-					</ul>
-				</div>
-				<div>
-					<p class="cityTitle">A</p>
-					<ul class="allCity citylist">
-						<li class="allcityItem">阿鲁及</li>
-						<li class="allcityItem">阿鲁及</li>
-						<li class="allcityItem">阿鲁及</li>
-						<li class="allcityItem">阿鲁及</li>
+						<li class="allcityItem" v-for='item of city' :key='item.id'>{{item.name}}</li>
 					</ul>
 				</div>
 			</div>
@@ -53,8 +26,18 @@
 	import BScroll from 'better-scroll'
 	export default {
 		name: 'cityList',
+		props: {
+			hotcities: Array,
+			cities: Object,
+			index: String
+		},
 		mounted () {
 			this.scroll = new BScroll(this.$refs.wrapper)
+		},
+		watch: {
+			index () {
+				this.scroll.scrollToElement(this.$refs[this.index][0])
+			}
 		}
 	}
 </script>
