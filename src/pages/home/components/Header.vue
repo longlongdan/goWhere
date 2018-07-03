@@ -8,7 +8,7 @@
 	    <span class="iconfont sousuo">&#xe653;</span>
 	    <router-link to='/city' class='citychoose'>
 		    <div class='header-right'>
-		      北京<span class="iconfont">&#xe64a;</span>
+		      {{this.$store.state.city}}<span class="iconfont">&#xe64a;</span>
 			</div>
 		</router-link>
 	</div>

@@ -4,7 +4,7 @@
 			<input type="text" placeholder="请输入城市名称" v-model='keyword'>
 		</div>
 		<ul class="search-list" v-show='show'>	
-			<li v-for='item of data'>{{item.name}}</li>
+			<li v-for='item of data' @click='handleCityClick(item.name)'>{{item.name}}</li>
 			<li v-show='noData'>没有搜索到匹配项</li>
 		</ul>
 	</div>
@@ -20,6 +20,13 @@
 				show: false,
 				keyword: '',
 				data: []
+			}
+		},
+		methods: {
+			handleCityClick (cityname) {
+				this.$store.commit('changecity', cityname)
+				this.$router.push({ path: '/' })
+
 			}
 		},
 		watch: {

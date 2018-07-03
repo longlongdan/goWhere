@@ -4,19 +4,19 @@
 				<div>
 					<p class="cityTitle">所在城市</p>
 					<ul class="loction citylist">
-						<li class="cityItem">绵阳</li>
+						<li class="cityItem">{{this.$store.state.city}}</li>
 					</ul>
 				</div>
 				<div>
 					<p class="cityTitle">热门城市</p>
 					<ul class="hotCity citylist">
-						<li class="cityItem" v-for='item of hotcities' :key='item.id'>{{item.name}}</li>
+						<li class="cityItem" v-for='item of hotcities' :key='item.id' @click='handleCityClick(item.name)'>{{item.name}}</li>
 					</ul>
 				</div>
 				<div v-for='(city,key) of cities' :key='key' :ref='key'>
 					<p class="cityTitle">{{key}}</p>
 					<ul class="allCity citylist">
-						<li class="allcityItem" v-for='item of city' :key='item.id'>{{item.name}}</li>
+						<li class="allcityItem" v-for='item of city' :key='item.id' @click='handleCityClick(item.name)'>{{item.name}}</li>
 					</ul>
 				</div>
 			</div>
@@ -31,8 +31,17 @@
 			cities: Object,
 			index: String
 		},
+		methods: {
+			handleCityClick (cityname) {
+				this.$store.commit('changecity', cityname)
+				this.$router.push({ path: '/' })
+
+			}
+		},
 		mounted () {
-			this.scroll = new BScroll(this.$refs.wrapper)
+			this.scroll = new BScroll(this.$refs.wrapper,{
+				click: true
+			})
 		},
 		watch: {
 			index () {
