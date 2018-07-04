@@ -4,7 +4,7 @@
 				<div>
 					<p class="cityTitle">所在城市</p>
 					<ul class="loction citylist">
-						<li class="cityItem">{{this.$store.state.city}}</li>
+						<li class="cityItem">{{cityName}}</li>
 					</ul>
 				</div>
 				<div>
@@ -24,6 +24,7 @@
 </template>
 <script>
 	import BScroll from 'better-scroll'
+	import {mapState} from 'vuex'
 	export default {
 		name: 'cityList',
 		props: {
@@ -47,6 +48,9 @@
 			index () {
 				this.scroll.scrollToElement(this.$refs[this.index][0])
 			}
+		},
+		computed: {
+			...mapState({'cityName':'city'})
 		}
 	}
 </script>
