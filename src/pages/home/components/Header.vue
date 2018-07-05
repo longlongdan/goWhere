@@ -46,12 +46,14 @@ export default {
 	.sousuo
 		position: absolute
 		left: .8rem
+		// right: .2rem
 		top: .05rem
 		color: $bgColor
 	.citychoose
 		color: #fff
 	.header-right
-		width: 1.24rem
+		// width: 1.24rem
+		margin-right: .2rem
 		float: right
 		text-align: center
 </style>
