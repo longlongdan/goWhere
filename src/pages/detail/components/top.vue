@@ -13,8 +13,9 @@
 				opacity : 0
 			}
 		},
-		activated () {
-			window.addEventListener('scroll',()=> {
+		methods: {
+			handleScroll () {
+				console.log(1)
 				if (window.scrollY >= 20 ) {
 					this.showDetails = true
 					if (window.scrollY <=150) {
@@ -28,7 +29,13 @@
 					}
 					
 				}
-			})
+			}
+		},
+		activated () {
+			window.addEventListener('scroll',this.handleScroll)
+		},
+		deactivated () {
+			window.removeEventListener('scroll',this.handleScroll)
 		}
 	}
 </script>
