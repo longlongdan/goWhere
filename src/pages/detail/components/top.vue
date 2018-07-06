@@ -1,31 +1,61 @@
 <template>
-	<div class="header">
+	<div class="top">
+		<router-link tag='div' class="goBack" to='/' v-show = '!showDetails'><span class="iconfont">&#xe624;</span></router-link>
+		<div class="showDetail" v-show = 'showDetails' :style='"opacity:"+opacity'>显示详情</div>
 	</div>
 </template>
 <script>
 	export default {
-		name: 'detaile-top'
+		name: 'detaile-top',
+		data () {
+			return {
+				showDetails: false,
+				opacity : 0
+			}
+		},
+		activated () {
+			window.addEventListener('scroll',()=> {
+				if (window.scrollY >= 20 ) {
+					this.showDetails = true
+					if (window.scrollY <=150) {
+						this.opacity = (window.scrollY-20)/130
+					}
+				}
+				else {
+					if (this.opacity <= 0.1) {
+						this.opacity = 0
+						this.showDetails = false
+					}
+					
+				}
+			})
+		}
 	}
 </script>
 <style lang="stylus" scoped>
-	.header
+@import "~styles/varibles.styl"
+.top
+	min-height: 900px
+	.goBack
+		position: absolute
+		left: .16rem
+		top: .16rem
+		width: .8rem
+		height: .8rem
+		background-color: #555
+		border-radius: 50%
+		text-align: center
+		.iconfont
+			line-height: .8rem
+			font-size: .5rem
+			color: #fff
+	.showDetail
 		width: 100%
-		height: 4.5rem
-		position: relative
+		text-align: center
+		position: fixed
+		left: 0
+		top: 0
+		line-height: .86rem
+		background: $bgColor
 		color: #fff
-		.header-img
-			width: 100%
-			height: 100%
-		.bottom
-			width: 100%
-			position: absolute
-			bottom: 0
-			left: 0
-			background: linear-gradient(top, rgba(0,0,0,0) , rgba(0,0,0,.8))
-			.des
-				float: left
-				padding: .1rem
-			.album
-				float:right
-				padding: .1rem
 </style>
