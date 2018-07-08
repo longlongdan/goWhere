@@ -1,25 +1,33 @@
 <template>
 	<div>
 		<div class="header">
-			<img src="https://img1.qunarzz.com/p/tts3/1802/8a/f8e33ac6d5a94402.jpg_r_640x420x90_e08cfd92.jpg" alt="" class="header-img" @click='showAlbus'>
+			<img :src="bannerImg" alt="" class="header-img" @click='showAlbus'>
 			<div class="bottom">
-				<p class="des">产品编号 0101023</p>
-				<span class="album"><span class="iconfont">&#xe6eb; </span>1/8</span>
+				<p class="des">{{sightName}}</p>
+				<span class="album"><span class="iconfont">&#xe6eb; </span>{{imgs.length}}</span>
 			</div>
 		</div>
-		<div class="albums" v-show='showAlbum' @click='showAlbus'>
-			<swiper :options="swiperOption">
-			    <!-- slides -->
-			    <swiper-slide><img src="https://img1.qunarzz.com/p/tts3/1802/8a/f8e33ac6d5a94402.jpg_r_640x420x90_e08cfd92.jpg" alt="" class="albumImg"></swiper-slide>
-			    <swiper-slide><img src="https://img1.qunarzz.com/p/tts9/1806/68/8e0419c08cc5602.jpg_r_1280x840x90_7b656127.jpg" alt=""  class="albumImg"></swiper-slide>
-			    <div class="swiper-pagination"  slot="pagination"></div>
-			</swiper>
-		</div>
+		<fade-animation>
+			<div class="albums" v-show='showAlbum' @click='showAlbus'>
+				<swiper :options="swiperOption">
+				    <!-- slides -->
+				    <swiper-slide v-for='img of imgs'><img :src="img" alt="" class="albumImg"></swiper-slide>
+				    <div class="swiper-pagination"  slot="pagination"></div>
+				</swiper>
+			</div>
+		</fade-animation>
 	</div>
 </template>
 <script>
+	import fadeAnimation from '../../commons/fade.vue'
 	export default {
 		name: 'detaile-header',
+		components: {fadeAnimation},
+		props: {
+			sightName: String,
+			bannerImg: String,
+			imgs: Array
+		},
 		data () {
 			return {
 				showAlbum: false,

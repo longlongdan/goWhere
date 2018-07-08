@@ -15,12 +15,16 @@
 		},
 		methods: {
 			handleScroll () {
-				console.log(1)
+				consle.log(1)
 				if (window.scrollY >= 20 ) {
 					this.showDetails = true
 					if (window.scrollY <=150) {
 						this.opacity = (window.scrollY-20)/130
 					}
+				}
+				else if (window.scrollY <20) {
+					this.opacity = 0
+					this.showDetails = false
 				}
 				else {
 					if (this.opacity <= 0.1) {
@@ -42,7 +46,7 @@
 <style lang="stylus" scoped>
 @import "~styles/varibles.styl"
 .top
-	min-height: 900px
+	// min-height: 900px
 	.goBack
 		position: absolute
 		left: .16rem

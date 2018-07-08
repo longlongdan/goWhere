@@ -2,7 +2,7 @@
 	<div class="recommend">
 		<div class="title">热销推荐</div>
 		<ul class="content">
-			<router-link tag='li' to='/detail' class="item" v-for='item of list' :key="item.id">
+			<router-link tag='li' :to="'/detail/'+item.id" class="item" v-for='item of list' :key="item.id">
 				<img :src="item.imgUrl" alt="">
 				<h3>{{item.title}}</h3>
 				<p>{{item.desc}}</p>
